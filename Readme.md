@@ -12,7 +12,7 @@ Basically, every day, I will ask [GPT-3 chat](https://chat.openai.com/chat) inte
 
 - day_X_a.py: Solution given from GPT
 - day_X_input.txt: Input of the problem
-- day_X_gpt.pdf: Screenshot of my "conversation" with the agent (file corrupted for day 1 and 2 ...)
+- day_X_gpt.png: Screenshot of my "conversation" with the agent (file corrupted for day 1)
 
 ## Results:
 

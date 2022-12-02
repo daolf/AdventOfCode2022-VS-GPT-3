@@ -1,37 +1,31 @@
-rules = {
-    "R": "S",
-    "P": "R",
-    "S": "P",
+# Read the input file
+with open('input_day_2.txt') as f:
+    strategy = f.read().strip().split('\n')
+
+# Define a dictionary that maps each shape to its score
+score = {
+    'A': 1,  # Rock
+    'B': 2,  # Paper
+    'C': 3,  # Scissors
 }
 
-with open("input_day_2.txt") as f:
-    guide = f.readlines()
+# Define a dictionary that maps each outcome to its score
+outcome = {
+    'L': 0,  # Lost
+    'D': 3,  # Draw
+    'W': 6,  # Won
+}
 
+# Initialize the total score to 0
 total_score = 0
 
-for line in guide:
-    shapes = line.strip().split()
-    first_shape = shapes[0]
-    second_shape = shapes[1]
+# Loop over the strategy guide and simulate the game
+for line in strategy:
+    # Parse the strategy guide
+    opponent, result = line.split()
 
-    # Replace letters in strategy guide with letters in rules dictionary
-    first_shape = first_shape.replace("A", "R").replace("B", "P").replace("C", "S")
-    second_shape = second_shape.replace("A", "R").replace("B", "P").replace("C", "S")
+    # Simulate the round and update the total score
+    total_score += score[opponent] + outcome[result]
 
-    # Calculate scores for each player
-    if first_shape == second_shape:
-        # Round ends in a draw
-        first_score = 1 + 3
-        second_score = 1 + 3
-    elif rules[first_shape] == second_shape:
-        # First player wins
-        first_score = 1 + 6
-        second_score = 1 + 0
-    else:
-        # Second player wins
-        first_score = 1 + 0
-        second_score = 1 + 6
-
-    total_score += first_score + second_score
-
+# Print the total score
 print(total_score)
